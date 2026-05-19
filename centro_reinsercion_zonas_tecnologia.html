@@ -1,0 +1,167 @@
+
+<style>
+  h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  .zone-tabs{display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}
+  .ztab{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;border:0.5px solid var(--color-border-secondary);cursor:pointer;color:var(--color-text-secondary);background:var(--color-background-primary);transition:all .15s}
+  .ztab.active-alta{background:#FCEBEB;color:#791F1F;border-color:#E24B4A}
+  .ztab.active-media{background:#FAEEDA;color:#633806;border-color:#EF9F27}
+  .ztab.active-baja{background:#EAF3DE;color:#27500A;border-color:#639922}
+  .zone-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:1.5rem}
+  .zcard{border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);padding:1rem;background:var(--color-background-primary)}
+  .zcard-title{font-size:13px;font-weight:500;margin-bottom:4px;color:var(--color-text-primary)}
+  .zcard-sub{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+  .badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:100px;margin-bottom:6px;font-weight:500}
+  .badge-alta{background:#FCEBEB;color:#791F1F}
+  .badge-media{background:#FAEEDA;color:#633806}
+  .badge-baja{background:#EAF3DE;color:#27500A}
+  .divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1.25rem 0}
+  .pulsera-wrap{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1.25rem}
+  .pulsera-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:.75rem}
+  .pcap{border-radius:var(--border-radius-md);padding:.6rem .75rem;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary)}
+  .pcap-icon{font-size:16px;margin-bottom:3px;color:var(--color-text-secondary)}
+  .pcap-t{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+  .pcap-s{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+  .trust-track{display:flex;align-items:center;gap:8px;margin:.5rem 0}
+  .trust-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .trust-label{font-size:12px;color:var(--color-text-secondary)}
+  .ia-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+  .ia-dot{width:6px;height:6px;border-radius:50%;margin-top:5px;flex-shrink:0;background:#534AB7}
+  .ia-text{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+</style>
+
+<h2 class="sr-only">Centro de reinserción social con tres zonas de vigilancia (alta, media, baja) según nivel de conciencia y delito, pulsera inteligente como herramienta de confianza delegada, e IA de detección ética.</h2>
+
+<div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem">Selecciona una zona para ver su tecnología y programas terapéuticos</div>
+
+<div class="zone-tabs">
+  <button class="ztab active-alta" id="tab-alta" onclick="setZone('alta')">
+    <i class="ti ti-alert-triangle" style="font-size:13px;margin-right:4px" aria-hidden="true"></i>Zona alta
+  </button>
+  <button class="ztab" id="tab-media" onclick="setZone('media')">
+    <i class="ti ti-adjustments" style="font-size:13px;margin-right:4px" aria-hidden="true"></i>Zona media
+  </button>
+  <button class="ztab" id="tab-baja" onclick="setZone('baja')">
+    <i class="ti ti-leaf" style="font-size:13px;margin-right:4px" aria-hidden="true"></i>Zona baja
+  </button>
+</div>
+
+<div class="zone-panel" id="zone-panel"></div>
+
+<hr class="divider">
+
+<div style="font-size:14px;font-weight:500;margin-bottom:.75rem">
+  <i class="ti ti-device-watch" style="font-size:16px;vertical-align:-2px;margin-right:6px" aria-hidden="true"></i>Pulsera inteligente — confianza delegada
+</div>
+
+<div class="pulsera-wrap">
+  <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:.5rem">No es un dispositivo de castigo — es un pasaporte de confianza progresiva</div>
+  <div class="pulsera-grid">
+    <div class="pcap">
+      <div class="pcap-icon"><i class="ti ti-lock-open" aria-hidden="true"></i></div>
+      <div class="pcap-t">Control de accesos</div>
+      <div class="pcap-s">Abre puertas según nivel de confianza actual</div>
+    </div>
+    <div class="pcap">
+      <div class="pcap-icon"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i></div>
+      <div class="pcap-t">Biométrica pasiva</div>
+      <div class="pcap-s">FC y estrés — alerta solo si hay riesgo real</div>
+    </div>
+    <div class="pcap">
+      <div class="pcap-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+      <div class="pcap-t">Geolocalización interna</div>
+      <div class="pcap-s">Solo dentro del recinto, no almacenada</div>
+    </div>
+    <div class="pcap">
+      <div class="pcap-icon"><i class="ti ti-sos" aria-hidden="true"></i></div>
+      <div class="pcap-t">Botón de emergencia</div>
+      <div class="pcap-s">El interno pide ayuda — no solo recibe vigilancia</div>
+    </div>
+    <div class="pcap">
+      <div class="pcap-icon"><i class="ti ti-trophy" aria-hidden="true"></i></div>
+      <div class="pcap-t">Indicador de logros</div>
+      <div class="pcap-s">Luz verde = accesos desbloqueados esta semana</div>
+    </div>
+    <div class="pcap">
+      <div class="pcap-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+      <div class="pcap-t">Datos protegidos</div>
+      <div class="pcap-s">Encriptación E2E, tutela judicial para acceder</div>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem;font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:.5rem">Niveles de confianza — se ganan, no se asignan</div>
+  <div class="trust-track">
+    <div class="trust-dot" style="background:#E24B4A"></div>
+    <div class="trust-label">Nivel 1 — Acceso básico: habitación + área terapéutica</div>
+  </div>
+  <div class="trust-track">
+    <div class="trust-dot" style="background:#EF9F27"></div>
+    <div class="trust-label">Nivel 2 — Acceso ampliado: talleres, comedor general, patio</div>
+  </div>
+  <div class="trust-track">
+    <div class="trust-dot" style="background:#639922"></div>
+    <div class="trust-label">Nivel 3 — Acceso libre dentro del centro + salidas terapéuticas</div>
+  </div>
+  <div class="trust-track">
+    <div class="trust-dot" style="background:#534AB7"></div>
+    <div class="trust-label">Nivel 4 — Prelibertad: salidas laborales, sin pulsera interna</div>
+  </div>
+</div>
+
+<div style="font-size:14px;font-weight:500;margin-bottom:.75rem">
+  <i class="ti ti-cpu" style="font-size:16px;vertical-align:-2px;margin-right:6px" aria-hidden="true"></i>IA de detección — principio de mínima intervención
+</div>
+
+<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem">
+  <div class="ia-row"><div class="ia-dot"></div><div class="ia-text">Detecta conductas agresivas y posturas de autolesión en tiempo real — no almacena imagen, solo el evento anonimizado</div></div>
+  <div class="ia-row"><div class="ia-dot"></div><div class="ia-text">Sensores de sonido identifican patrones de angustia (llanto, gritos) y los cruza con datos de la pulsera para reducir falsas alarmas</div></div>
+  <div class="ia-row"><div class="ia-dot"></div><div class="ia-text">Toda alerta genera una notificación al operador humano — la IA nunca actúa sola ni toma decisiones disciplinarias</div></div>
+  <div class="ia-row"><div class="ia-dot"></div><div class="ia-text">Sin reconocimiento facial almacenado — las cámaras procesan el flujo en el dispositivo local y descartan los datos cada 15 min</div></div>
+  <div class="ia-row"><div class="ia-dot"></div><div class="ia-text">Informe mensual público del uso del sistema, revisado por la Defensoría de los Habitantes de Costa Rica</div></div>
+</div>
+
+<button onclick="sendPrompt('¿Cómo se diseña el programa terapéutico de regulación emocional para la zona alta?')" style="margin-top:1.25rem">Ver programa terapéutico de regulación emocional ↗</button>
+
+<script>
+const zones = {
+  alta: [
+    {badge:'alta', title:'Delito y perfil', sub:'Violencia grave, alta impulsividad, riesgo evaluado por psicología forense en ingreso'},
+    {badge:'alta', title:'Vigilancia', sub:'Cámaras IA en zonas comunes, sensores de movimiento y sonido, pulsera nivel 1'},
+    {badge:'alta', title:'Privacidad', sub:'Sin cámara en celda. Espacio íntimo garantizado. Llamadas monitoreadas con aviso previo'},
+    {badge:'alta', title:'Programa terapéutico', sub:'Regulación emocional diaria, manejo de impulsos, psicología individual 3×/semana'},
+    {badge:'alta', title:'Espacio físico', sub:'Módulos pequeños, patios divididos, áreas de descompresión con acceso a naturaleza'},
+    {badge:'alta', title:'Progresión', sub:'Evaluación mensual. Reducción de nivel según avances conductuales y terapéuticos'},
+  ],
+  media: [
+    {badge:'media', title:'Delito y perfil', sub:'Delitos no violentos graves o internos en transición desde zona alta'},
+    {badge:'media', title:'Vigilancia', sub:'Cámaras en zonas comunes, sensores de sonido, pulsera nivel 2 con acceso ampliado'},
+    {badge:'media', title:'Privacidad', sub:'Sin cámara en celda ni en espacios terapéuticos. Privacidad de consulta garantizada'},
+    {badge:'media', title:'Programa terapéutico', sub:'Talleres de habilidades sociales, control de impulsos, terapia grupal 2×/semana'},
+    {badge:'media', title:'Espacio físico', sub:'Talleres productivos, área deportiva compartida, huerto terapéutico'},
+    {badge:'media', title:'Progresión', sub:'Evaluación bimensual. Acceso a programas de formación y trabajo remunerado'},
+  ],
+  baja: [
+    {badge:'baja', title:'Delito y perfil', sub:'Delitos de bajo riesgo o próximos a libertad. Alta conciencia del daño causado'},
+    {badge:'baja', title:'Vigilancia', sub:'Solo perímetro externo. Botones de emergencia disponibles. Pulsera nivel 3-4'},
+    {badge:'baja', title:'Privacidad', sub:'Máxima autonomía interior. Sin monitoreo de comunicaciones. Visitas sin restricción'},
+    {badge:'baja', title:'Programa terapéutico', sub:'Reinserción laboral, reparación a víctimas, planes de vida, apoyo familiar'},
+    {badge:'baja', title:'Espacio físico', sub:'Habitaciones individuales, cocina compartida, sala de estudio, acceso a comunidad'},
+    {badge:'baja', title:'Progresión', sub:'Salidas laborales y educativas. Preparación activa para la libertad'},
+  ]
+};
+
+function setZone(z) {
+  ['alta','media','baja'].forEach(k => {
+    const tab = document.getElementById('tab-'+k);
+    tab.className = 'ztab' + (k===z ? ' active-'+k : '');
+  });
+  const panel = document.getElementById('zone-panel');
+  panel.innerHTML = zones[z].map(c => `
+    <div class="zcard">
+      <div class="badge badge-${c.badge}">${c.badge === 'alta' ? 'Vigilancia alta' : c.badge === 'media' ? 'Vigilancia media' : 'Vigilancia baja'}</div>
+      <div class="zcard-title">${c.title}</div>
+      <div class="zcard-sub">${c.sub}</div>
+    </div>
+  `).join('');
+}
+setZone('alta');
+</script>
